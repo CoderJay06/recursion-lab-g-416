@@ -123,11 +123,23 @@ function isPalindrome(string) {
 
 // recursive solution:
 
+function addUpTo(array, idxInput) {
+  // base case: idxInput is 0, return 0
+  if (idxInput <= 0) {
+    return 0;
+  } else {
+    // otherwise, recursively calculate sum
+    return (addUpTo(array, idxInput - 1) + array[idxInput - 1]);
+  }
+}
 
+<<<<<<< HEAD
 function addUpTo(myArray, index) {
   return index ? myArray[index] + addUpTo(myArray, --index) : myArray[index];
 }
 
+// problem: return max number of an array 
+=======
 // problem: return max number of an array 
 
 // function maxOf(array) {
@@ -146,7 +158,26 @@ function addUpTo(myArray, index) {
 //     }, array[0])
 //   )
 // }
+>>>>>>> f1b40fb590332f54221ade979d9e6014f9bdcc8f
 
+// function maxOf(array) {
+//   // specific solution:
+//   // set a max value to first arary value
+//   // increment through array, updating max value
+//   // if current value is bigger than max 
+//   // return max value
+  
+//   return (
+//     array.reduce((max, currNum) => {
+//       if (max && max < currNum) {
+//         max = currNum;
+//       }
+//       return max;
+//     }, array[0])
+//   )
+// }
+
+<<<<<<< HEAD
 // problem: check if a given number is included in the array:
 
 // function includesNumber(array, number) {
@@ -172,6 +203,61 @@ function maxOf(array) {
     return array[0];
   } else {
     return Math.max( array.pop(), maxOf(array) ) 
+=======
+function maxOf(array, currentIdx = 0) {
+  // recursive solution:
+  // set max to first value in array 
+  // pass in current value idx as argument 
+  // if current value is greater
+    // update max 
+  // otherwise 
+    // return max 
+}
+
+// problem: check if a given number is included in the array:
+
+// function includesNumber(array, number) {
+  
+//   return array.includes(number);
+// }
+
+// recursive solution:
+
+function includesNumber(array, number, splicer = 1) {
+  // requirements: 
+    // return value must be a boolean
+    
+  // implementation:
+    // splice down array recursively
+    // check if frst value of array matches number 
+    // until number is found or 
+    // array length is < 1 then we know its not in array 
+    
+  // base case:
+  if (array[0] === number) {
+    return true;
+  } else if (array.length <= 1 && array[0] !== number) {
+    return false;
+  } else {
+    return includesNumber(array.splice(splicer), number, splicer + 1)
+  }
+}
+
+
+
+function maxOf(array, idx = 1) {
+  // store first number in array as max 
+  // recursively call array, decrementing 
+  // through each of its numbers
+  // comparing max to each number
+  // update max if bigger number found
+  let max = array[0];
+  // base case: array length is reached, max has been found
+  if (idx === array.length) {
+    return max;
+  } else {
+    return Math.max(maxOf(array.pop(), maxOf(array))) 
+>>>>>>> f1b40fb590332f54221ade979d9e6014f9bdcc8f
   }
 }
 
